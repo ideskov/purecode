@@ -13,14 +13,9 @@ public class UserService {
     }
 
     public UserDto getById(Long id) {
-        var entity = userRepository
+        return userRepository
                 .findById(id)
+                .map(UserDto::fromEntity)
                 .orElseThrow(() -> new EntityNotFoundException("User " + id + " not found"));
-        return new UserDto(
-                entity.getId(),
-                entity.getFirstName(),
-                entity.getLastName(),
-                entity.getEmail()
-        );
     }
 }

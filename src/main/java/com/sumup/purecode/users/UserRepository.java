@@ -1,6 +1,6 @@
 package com.sumup.purecode.users;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends JpaRepository<UserEntity, Long> {
+interface UserRepository extends CrudRepository<UserEntity, Long> {
 }
