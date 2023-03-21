@@ -17,11 +17,6 @@ class UserService(private val userRepository: UserRepository) {
     fun getById(id: Long): Either<UserServiceError, UserDto> = either.eager {
         val userEntity = userRepository.findByIdOrNull(id)
         ensureNotNull(userEntity) { NotFound }
-        UserDto(
-            userEntity.id!!,
-            userEntity.firstName!!,
-            userEntity.lastName!!,
-            userEntity.email!!
-        )
+        UserDto.fromEntity(userEntity)
     }
 }
